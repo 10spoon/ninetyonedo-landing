@@ -1,9 +1,30 @@
 'use client';
 
-import { Mail, Phone, MapPin } from 'lucide-react';
-import Link from 'next/link';
+import { Mail, Phone, MapPin, Loader2 } from 'lucide-react';
+import { useState } from 'react';
+import { submitContact } from '@/app/actions';
+import { toast } from 'sonner';
 
 export function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(event.currentTarget);
+    const result = await submitContact(formData);
+
+    setIsSubmitting(false);
+
+    if (result.success) {
+      toast.success('상담 신청이 완료되었습니다. 곧 연락드리겠습니다!');
+      (event.target as HTMLFormElement).reset();
+    } else {
+      toast.error(result.error || '오류가 발생했습니다.');
+    }
+  }
+
   return (
     <section id="contact" className="bg-primary/5 py-20 sm:py-28">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
@@ -17,46 +38,58 @@ export function Contact() {
         </div>
 
         <div className="rounded-lg border border-border bg-card p-8 sm:p-12">
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid gap-6 sm:grid-cols-2">
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
                   이름
                 </label>
                 <input
+                  id="name"
+                  name="name"
                   type="text"
+                  required
                   placeholder="예: 김사업"
                   className="w-full px-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
                   이메일
                 </label>
                 <input
+                  id="email"
+                  name="email"
                   type="email"
-                  placeholder="example@email.com"
+                  required
+                  placeholder="example@91do.co.kr"
                   className="w-full px-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
                 전화번호
               </label>
               <input
+                id="phone"
+                name="phone"
                 type="tel"
+                required
                 placeholder="010-1234-5678"
                 className="w-full px-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
                 프로젝트 설명
               </label>
               <textarea
+                id="message"
+                name="message"
+                required
                 placeholder="당신의 아이디어와 목표에 대해 설명해주세요..."
                 rows={5}
                 className="w-full px-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50"
@@ -65,9 +98,17 @@ export function Contact() {
 
             <button
               type="submit"
-              className="w-full bg-primary px-8 py-3 text-base font-medium text-primary-foreground rounded-lg transition-opacity hover:opacity-90"
+              disabled={isSubmitting}
+              className="w-full bg-primary px-8 py-3 text-base font-medium text-primary-foreground rounded-lg transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
-              상담 신청하기
+              {isSubmitting ? (
+                <>
+                  <Loader2 size={20} className="animate-spin" />
+                  처리 중...
+                </>
+              ) : (
+                '상담 신청하기'
+              )}
             </button>
           </form>
 

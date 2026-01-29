@@ -15,19 +15,37 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
+        url: '/icon.png',
+        type: 'image/png',
       },
       {
         url: '/icon.svg',
         type: 'image/svg+xml',
       },
     ],
-    apple: '/apple-icon.png',
+    apple: '/icon.png',
+  },
+  openGraph: {
+    title: '91도 | 밀착 상담 기반 MVP 개발 파트너',
+    description: '주식회사 91도: 랜딩 페이지부터 MVP 앱까지, 밀착 상담으로 비즈니스의 첫 발을 함께합니다.',
+    url: 'https://91do.co.kr',
+    siteName: '91도',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: '91도 - 밀착 상담 기반 MVP 개발 파트너',
+      },
+    ],
+    locale: 'ko_KR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '91도 | 밀착 상담 기반 MVP 개발 파트너',
+    description: '주식회사 91도: 랜딩 페이지부터 MVP 앱까지, 밀착 상담으로 비즈니스의 첫 발을 함께합니다.',
+    images: ['/og-image.png'],
   },
 }
 

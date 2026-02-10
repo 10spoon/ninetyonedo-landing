@@ -26,14 +26,6 @@ export const metadata: Metadata = {
     description: '주식회사 91도: 랜딩 페이지부터 MVP 앱까지, 밀착 상담으로 비즈니스의 첫 발을 함께합니다.',
     url: 'https://91do.co.kr',
     siteName: '91도',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: '91도 - 밀착 상담 기반 MVP 개발 파트너',
-      },
-    ],
     locale: 'ko_KR',
     type: 'website',
   },
@@ -41,7 +33,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: '91도 | 밀착 상담 기반 MVP 개발 파트너',
     description: '주식회사 91도: 랜딩 페이지부터 MVP 앱까지, 밀착 상담으로 비즈니스의 첫 발을 함께합니다.',
-    images: ['/og-image.png'],
   },
 }
 

@@ -41,45 +41,47 @@ export function Considerations() {
   return (
     <section className="py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="space-y-12">
-          {sections.map((section, idx) => (
-            <div key={idx}>
-              <h3 className="text-2xl font-bold text-foreground mb-6">
-                {section.title}
-              </h3>
+        <div className="border-[3px] border-foreground bg-card p-8 sm:p-12 shadow-brutal-lg">
+          <div className="space-y-12">
+            {sections.map((section, idx) => (
+              <div key={idx}>
+                <h3 className="inline-block bg-primary text-primary-foreground px-4 py-2 border-2 border-foreground shadow-brutal-sm font-black text-xl mb-6">
+                  {section.title}
+                </h3>
 
-              {section.items && (
-                <ul className="space-y-3 mb-8">
-                  {section.items.map((item, i) => (
-                    <li key={i} className="flex gap-3 text-foreground/70">
-                      <span className="text-primary font-bold mt-0.5">•</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
+                {section.items && (
+                  <ul className="space-y-3 mb-8">
+                    {section.items.map((item, i) => (
+                      <li key={i} className="flex gap-3 text-foreground/70">
+                        <span className="text-primary font-bold mt-0.5">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
-              {section.subsections && (
-                <div className="space-y-6">
-                  {section.subsections.map((sub, i) => (
-                    <div key={i}>
-                      <h4 className="font-semibold text-foreground mb-3">
-                        {sub.subtitle}
-                      </h4>
-                      <ul className="space-y-2 ml-4">
-                        {sub.items.map((item, j) => (
-                          <li key={j} className="flex gap-3 text-foreground/70">
-                            <span className="text-primary">-</span>
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
+                {section.subsections && (
+                  <div className="space-y-6">
+                    {section.subsections.map((sub, i) => (
+                      <div key={i} className="border-2 border-foreground p-6 bg-card shadow-brutal">
+                        <h4 className="font-bold text-foreground mb-3">
+                          {sub.subtitle}
+                        </h4>
+                        <ul className="space-y-2 ml-4">
+                          {sub.items.map((item, j) => (
+                            <li key={j} className="flex gap-3 text-foreground/70">
+                              <span className="text-primary font-bold">-</span>
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

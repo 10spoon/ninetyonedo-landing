@@ -65,7 +65,7 @@ export function Pricing() {
     <section id="pricing" className="py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
+          <h2 className="text-3xl font-black text-foreground sm:text-4xl">
             서비스 개발 패키지
           </h2>
           <p className="mt-4 text-lg text-foreground/60">
@@ -77,13 +77,13 @@ export function Pricing() {
           {packages.map((pkg, idx) => (
             <div
               key={idx}
-              className={`relative rounded-lg border transition-all ${pkg.highlight
-                ? 'border-primary bg-primary/5 md:scale-105'
-                : 'border-border bg-card'
+              className={`relative border-[3px] border-foreground shadow-brutal-lg transition-all ${pkg.highlight
+                ? 'bg-secondary md:scale-105'
+                : 'bg-card'
                 }`}
             >
               {pkg.highlight && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-3 py-1 border-2 border-foreground shadow-brutal-sm text-sm font-bold">
                   인기
                 </div>
               )}
@@ -94,7 +94,7 @@ export function Pricing() {
 
                 <div className="mt-6">
                   <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-bold text-primary">
+                    <span className="text-5xl font-black text-foreground">
                       {pkg.price}
                     </span>
                     {pkg.duration && (
@@ -105,30 +105,32 @@ export function Pricing() {
 
                 <Link
                   href="/#contact"
-                  className={`mt-6 block w-full py-2 px-4 rounded-lg text-center font-medium transition-colors ${pkg.highlight
-                    ? 'bg-primary text-primary-foreground hover:opacity-90'
-                    : 'border border-border text-foreground hover:bg-muted'
+                  className={`mt-6 block w-full py-2 px-4 text-center font-bold border-2 border-foreground shadow-brutal hover:shadow-brutal-sm hover:translate-x-[2px] hover:translate-y-[2px] transition-all ${pkg.highlight
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-card text-foreground hover:bg-muted'
                     }`}
                 >
                   문의하기
                 </Link>
 
-                <div className="mt-8 border-t border-border pt-8">
-                  <h4 className="text-sm font-semibold text-foreground mb-4">
+                <div className="mt-8 border-t-2 border-foreground pt-8">
+                  <h4 className="text-sm font-bold text-foreground mb-4">
                     포함 사항
                   </h4>
                   <ul className="space-y-3">
                     {pkg.features.map((feature, i) => (
                       <li key={i} className="flex gap-3 text-sm text-foreground/70">
-                        <Check size={16} className="flex-shrink-0 text-primary mt-0.5" />
+                        <span className="flex-shrink-0 mt-0.5 h-5 w-5 flex items-center justify-center bg-accent border border-foreground">
+                          <Check size={12} className="text-foreground" />
+                        </span>
                         <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="mt-8 border-t border-border pt-8">
-                  <h4 className="text-sm font-semibold text-foreground mb-4">
+                <div className="mt-8 border-t-2 border-foreground pt-8">
+                  <h4 className="text-sm font-bold text-foreground mb-4">
                     추천 상황
                   </h4>
                   <ul className="space-y-2">

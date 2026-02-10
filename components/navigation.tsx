@@ -15,11 +15,11 @@ export function Navigation() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 border-b-3 border-foreground bg-background">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold">
+            <div className="flex h-8 w-8 items-center justify-center border-2 border-foreground bg-primary text-primary-foreground font-bold shadow-[2px_2px_0px_black]">
               91
             </div>
             <span className="hidden text-lg font-bold text-foreground sm:inline">91도</span>
@@ -30,7 +30,7 @@ export function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm text-foreground/70 transition-colors hover:text-foreground"
+                className="text-sm text-foreground font-semibold transition-colors hover:underline decoration-2 underline-offset-4"
               >
                 {item.label}
               </Link>
@@ -39,14 +39,14 @@ export function Navigation() {
 
           <Link
             href="/#contact"
-            className="hidden bg-primary px-4 py-2 text-sm font-medium text-primary-foreground rounded-lg transition-colors hover:opacity-90 md:inline-block"
+            className="hidden bg-primary px-4 py-2 text-sm font-bold text-primary-foreground border-2 border-foreground shadow-brutal hover:shadow-brutal-sm hover:translate-x-[2px] hover:translate-y-[2px] transition-all md:inline-block"
           >
             시작하기
           </Link>
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-foreground"
+            className="md:hidden text-foreground border-2 border-foreground p-1"
             aria-label="메뉴"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -54,13 +54,13 @@ export function Navigation() {
         </div>
 
         {isOpen && (
-          <div className="border-t border-border bg-background py-4 md:hidden">
+          <div className="border-t-2 border-foreground bg-background py-4 shadow-brutal md:hidden">
             <div className="flex flex-col gap-4">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-foreground/70 transition-colors hover:text-foreground"
+                  className="text-foreground font-semibold transition-colors hover:underline decoration-2"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
@@ -68,7 +68,7 @@ export function Navigation() {
               ))}
               <Link
                 href="/#contact"
-                className="bg-primary px-4 py-2 text-sm font-medium text-primary-foreground rounded-lg text-center transition-colors hover:opacity-90"
+                className="bg-primary px-4 py-2 text-sm font-bold text-primary-foreground border-2 border-foreground shadow-brutal text-center transition-all hover:shadow-brutal-sm hover:translate-x-[2px] hover:translate-y-[2px]"
                 onClick={() => setIsOpen(false)}
               >
                 시작하기

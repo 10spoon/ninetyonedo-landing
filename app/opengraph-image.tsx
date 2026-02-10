@@ -4,10 +4,24 @@ export const alt = '91도 - 밀착 상담 기반 MVP 개발 파트너';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
+async function loadGoogleFont(font: string, weight: number) {
+  const url = `https://fonts.googleapis.com/css2?family=${font}:wght@${weight}&display=swap`;
+  const css = await fetch(url, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; de-at) AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1',
+    },
+  }).then((res) => res.text());
+
+  const match = css.match(/src: url\((.+?)\) format\('(opentype|truetype|woff)'\)/);
+  if (!match) {
+    throw new Error('Could not find font URL in CSS');
+  }
+
+  return fetch(match[1]).then((res) => res.arrayBuffer());
+}
+
 export default async function Image() {
-  const notoSansBold = await fetch(
-    'https://fonts.gstatic.com/s/notosanskr/v36/PbyxFmXiEBPT4ITbgNA5Cgms3VYcOA-vvnIzzuoyeLTq8H4hfAN7l0ct.0.woff2'
-  ).then((res) => res.arrayBuffer());
+  const fontBold = await loadGoogleFont('Noto+Sans+KR', 900);
 
   return new ImageResponse(
     (
@@ -172,7 +186,7 @@ export default async function Image() {
       fonts: [
         {
           name: 'Noto Sans KR',
-          data: notoSansBold,
+          data: fontBold,
           weight: 900,
           style: 'normal' as const,
         },

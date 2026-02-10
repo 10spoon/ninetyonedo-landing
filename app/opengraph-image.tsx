@@ -1,18 +1,18 @@
 import { ImageResponse } from 'next/og';
 
-export const runtime = 'edge';
 export const alt = '91도 - 밀착 상담 기반 MVP 개발 파트너';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
 export default async function Image() {
-  const paperlogyBold = await fetch(
-    'https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-9Black.woff2'
-  ).then((res) => res.arrayBuffer());
-
-  const paperlogyMedium = await fetch(
-    'https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-5Medium.woff2'
-  ).then((res) => res.arrayBuffer());
+  const [paperlogyBold, paperlogyMedium] = await Promise.all([
+    fetch(
+      'https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-9Black.woff2'
+    ).then((res) => res.arrayBuffer()),
+    fetch(
+      'https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-5Medium.woff2'
+    ).then((res) => res.arrayBuffer()),
+  ]);
 
   return new ImageResponse(
     (
@@ -26,7 +26,6 @@ export default async function Image() {
           fontFamily: 'Paperlogy',
         }}
       >
-        {/* Main card */}
         <div
           style={{
             width: '100%',
@@ -40,9 +39,7 @@ export default async function Image() {
             padding: '60px',
           }}
         >
-          {/* Top section */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            {/* Logo badge */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
               <div
                 style={{
@@ -72,7 +69,6 @@ export default async function Image() {
               </span>
             </div>
 
-            {/* Title */}
             <div
               style={{
                 display: 'flex',
@@ -103,7 +99,6 @@ export default async function Image() {
             </div>
           </div>
 
-          {/* Bottom stats */}
           <div style={{ display: 'flex', gap: '20px' }}>
             <div
               style={{
@@ -184,13 +179,13 @@ export default async function Image() {
           name: 'Paperlogy',
           data: paperlogyBold,
           weight: 900,
-          style: 'normal',
+          style: 'normal' as const,
         },
         {
           name: 'Paperlogy',
           data: paperlogyMedium,
           weight: 500,
-          style: 'normal',
+          style: 'normal' as const,
         },
       ],
     }

@@ -5,14 +5,9 @@ export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
 export default async function Image() {
-  const [paperlogyBold, paperlogyMedium] = await Promise.all([
-    fetch(
-      'https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-9Black.woff2'
-    ).then((res) => res.arrayBuffer()),
-    fetch(
-      'https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-5Medium.woff2'
-    ).then((res) => res.arrayBuffer()),
-  ]);
+  const notoSansBold = await fetch(
+    'https://fonts.gstatic.com/s/notosanskr/v36/PbyxFmXiEBPT4ITbgNA5Cgms3VYcOA-vvnIzzuoyeLTq8H4hfAN7l0ct.0.woff2'
+  ).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
     (
@@ -23,7 +18,7 @@ export default async function Image() {
           display: 'flex',
           backgroundColor: '#f5f0e8',
           padding: '40px',
-          fontFamily: 'Paperlogy',
+          fontFamily: 'Noto Sans KR',
         }}
       >
         <div
@@ -114,7 +109,7 @@ export default async function Image() {
               }}
             >
               <span style={{ fontSize: '36px', fontWeight: 900 }}>48시간</span>
-              <span style={{ fontSize: '16px', fontWeight: 500, opacity: 0.85 }}>
+              <span style={{ fontSize: '16px', fontWeight: 900, opacity: 0.85 }}>
                 랜딩 페이지
               </span>
             </div>
@@ -132,7 +127,7 @@ export default async function Image() {
               }}
             >
               <span style={{ fontSize: '36px', fontWeight: 900 }}>5일</span>
-              <span style={{ fontSize: '16px', fontWeight: 500 }}>핵심 기능 구현</span>
+              <span style={{ fontSize: '16px', fontWeight: 900 }}>핵심 기능 구현</span>
             </div>
             <div
               style={{
@@ -148,7 +143,7 @@ export default async function Image() {
               }}
             >
               <span style={{ fontSize: '36px', fontWeight: 900 }}>10일</span>
-              <span style={{ fontSize: '16px', fontWeight: 500 }}>
+              <span style={{ fontSize: '16px', fontWeight: 900 }}>
                 실사용 서비스
               </span>
             </div>
@@ -176,15 +171,9 @@ export default async function Image() {
       ...size,
       fonts: [
         {
-          name: 'Paperlogy',
-          data: paperlogyBold,
+          name: 'Noto Sans KR',
+          data: notoSansBold,
           weight: 900,
-          style: 'normal' as const,
-        },
-        {
-          name: 'Paperlogy',
-          data: paperlogyMedium,
-          weight: 500,
           style: 'normal' as const,
         },
       ],

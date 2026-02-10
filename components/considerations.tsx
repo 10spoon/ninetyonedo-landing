@@ -1,5 +1,8 @@
 'use client';
 
+import { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
+
 const sections = [
   {
     title: '공통 사항',
@@ -38,51 +41,66 @@ const sections = [
 ];
 
 export function Considerations() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <section className="py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="border-[3px] border-foreground bg-card p-8 sm:p-12 shadow-brutal-lg">
-          <div className="space-y-12">
-            {sections.map((section, idx) => (
-              <div key={idx}>
-                <h3 className="inline-block bg-primary text-primary-foreground px-4 py-2 border-2 border-foreground shadow-brutal-sm font-black text-xl mb-6">
-                  {section.title}
-                </h3>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="w-full flex items-center justify-between bg-card border-[3px] border-foreground shadow-brutal px-8 py-5 font-black text-xl text-foreground hover:shadow-brutal-sm hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+        >
+          <span>참고사항</span>
+          <ChevronDown
+            size={28}
+            className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+          />
+        </button>
 
-                {section.items && (
-                  <ul className="space-y-3 mb-8">
-                    {section.items.map((item, i) => (
-                      <li key={i} className="flex gap-3 text-foreground/70">
-                        <span className="text-primary font-bold mt-0.5">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+        {isOpen && (
+          <div className="border-[3px] border-t-0 border-foreground bg-card p-8 sm:p-12 shadow-brutal-lg">
+            <div className="space-y-12">
+              {sections.map((section, idx) => (
+                <div key={idx}>
+                  <h3 className="inline-block bg-primary text-primary-foreground px-4 py-2 border-2 border-foreground shadow-brutal-sm font-black text-xl mb-6">
+                    {section.title}
+                  </h3>
 
-                {section.subsections && (
-                  <div className="space-y-6">
-                    {section.subsections.map((sub, i) => (
-                      <div key={i} className="border-2 border-foreground p-6 bg-card shadow-brutal">
-                        <h4 className="font-bold text-foreground mb-3">
-                          {sub.subtitle}
-                        </h4>
-                        <ul className="space-y-2 ml-4">
-                          {sub.items.map((item, j) => (
-                            <li key={j} className="flex gap-3 text-foreground/70">
-                              <span className="text-primary font-bold">-</span>
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
+                  {section.items && (
+                    <ul className="space-y-3 mb-8">
+                      {section.items.map((item, i) => (
+                        <li key={i} className="flex gap-3 text-foreground/70">
+                          <span className="text-primary font-bold mt-0.5">•</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {section.subsections && (
+                    <div className="space-y-6">
+                      {section.subsections.map((sub, i) => (
+                        <div key={i} className="border-2 border-foreground p-6 bg-card shadow-brutal">
+                          <h4 className="font-bold text-foreground mb-3">
+                            {sub.subtitle}
+                          </h4>
+                          <ul className="space-y-2 ml-4">
+                            {sub.items.map((item, j) => (
+                              <li key={j} className="flex gap-3 text-foreground/70">
+                                <span className="text-primary font-bold">-</span>
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

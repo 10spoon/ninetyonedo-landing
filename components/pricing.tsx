@@ -71,6 +71,9 @@ export function Pricing() {
           <p className="mt-4 text-lg text-foreground/60">
             단계별로 맞춘 패키지로 필요한 것만 개발합니다
           </p>
+          <p className="mt-2 text-sm text-foreground/40">
+            * 모든 금액은 VAT 별도입니다
+          </p>
         </div>
 
         <div className="grid gap-8 md:grid-cols-3">

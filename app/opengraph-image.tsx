@@ -140,8 +140,8 @@ export default async function Image() {
                 color: '#1a1a1a',
               }}
             >
-              <span style={{ fontSize: '36px', fontWeight: 900 }}>5일</span>
-              <span style={{ fontSize: '16px', fontWeight: 900 }}>핵심 기능 구현</span>
+              <span style={{ fontSize: '36px', fontWeight: 900 }}>20만원</span>
+              <span style={{ fontSize: '16px', fontWeight: 900 }}>부터 시작</span>
             </div>
             <div
               style={{
@@ -156,9 +156,9 @@ export default async function Image() {
                 color: '#1a1a1a',
               }}
             >
-              <span style={{ fontSize: '36px', fontWeight: 900 }}>10일</span>
+              <span style={{ fontSize: '36px', fontWeight: 900 }}>빠른 대응</span>
               <span style={{ fontSize: '16px', fontWeight: 900 }}>
-                실사용 서비스
+                밀착 상담
               </span>
             </div>
             <div

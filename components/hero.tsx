@@ -9,7 +9,7 @@ export function Hero() {
         <div className="text-center">
           <div className="mb-6 inline-flex items-center gap-2 bg-secondary border-2 border-foreground shadow-brutal-sm px-4 py-2">
             <div className="h-3 w-3 bg-accent border border-foreground" />
-            <span className="text-sm font-bold text-foreground">주식회사 91도</span>
+            <span className="text-sm font-bold text-foreground">린스타트업 MVP 개발 파트너</span>
           </div>
 
           <h1 className="mx-auto max-w-4xl text-5xl font-black leading-tight text-foreground sm:text-6xl md:text-7xl px-4">
@@ -20,9 +20,9 @@ export function Hero() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-lg text-foreground/70 leading-relaxed px-4">
-            <span className="block sm:inline">아이디어와 현실 사이의 마찰을 줄이기 위해 </span>
+            <span className="block sm:inline">빠르게 만들고, 시장에서 검증하고, 빠르게 개선하세요.</span>
             <br className="hidden sm:block" />
-            <span className="block sm:inline">설계·개발·출시 전 과정에 의도적인 여유를 남깁니다.</span>
+            <span className="block sm:inline">91도는 린스타트업 방식으로 MVP를 함께 설계하고 개발합니다.</span>
           </p>
 
           <div className="mt-8 inline-block bg-muted border-2 border-foreground shadow-brutal-sm px-6 py-3">
@@ -52,12 +52,12 @@ export function Hero() {
               <p className="text-sm text-primary-foreground/80 font-semibold">랜딩 페이지 제작</p>
             </div>
             <div className="flex flex-col items-center gap-2 bg-secondary border-2 border-foreground shadow-brutal p-6">
-              <div className="text-4xl font-black text-foreground">5일</div>
-              <p className="text-sm text-foreground/70 font-semibold">핵심 기능 구현</p>
+              <div className="text-4xl font-black text-foreground">20만원~</div>
+              <p className="text-sm text-foreground/70 font-semibold">MVP 개발 시작</p>
             </div>
             <div className="flex flex-col items-center gap-2 bg-accent border-2 border-foreground shadow-brutal p-6">
-              <div className="text-4xl font-black text-foreground">10일</div>
-              <p className="text-sm text-foreground/70 font-semibold">실사용 서비스 제작</p>
+              <div className="text-4xl font-black text-foreground">빠른 대응</div>
+              <p className="text-sm text-foreground/70 font-semibold">밀착 상담 기반</p>
             </div>
           </div>
         </div>

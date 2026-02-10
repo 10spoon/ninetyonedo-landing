@@ -6,7 +6,7 @@ import Link from 'next/link';
 const packages = [
   {
     name: '랜딩 페이지',
-    price: '30만원',
+    price: '20만원',
     duration: '',
     description: '아이디어 검증 / 사전 수요 수집용',
     features: [
@@ -24,7 +24,7 @@ const packages = [
   },
   {
     name: '핵심 기능 1개 구현',
-    price: '150만원',
+    price: '100만원',
     duration: '',
     description: '"이 기능만 있으면 설명이 된다" 단계',
     features: [
@@ -38,11 +38,11 @@ const packages = [
       '데모가 필요한 단계',
       '고객에게 직접 써보게 하고 싶은 경우',
     ],
-    highlight: true,
+    highlight: false,
   },
   {
     name: '실사용 가능한 MVP 앱',
-    price: '500만원',
+    price: '상담 후 결정',
     duration: '',
     description: '실제 사용자 유입이 가능한 수준',
     features: [
